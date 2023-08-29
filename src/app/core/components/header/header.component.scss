@@ -1,0 +1,53 @@
+.wrapper {
+  color: #d9d9d7;
+  width: 100vw;
+  height: 100vh;
+  background: url("../../../../assets/images/background.png");
+  background-repeat: repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 10vw;
+
+  .header {
+    width: 50%;
+    margin-right: 40px;
+
+    .logo {
+      font-size: 45px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 4px;
+    }
+
+    .win-header {
+      font-size: 20px;
+    }
+
+    .paragraph {
+      font-size: 16px;
+      margin: 40px 0;
+    }
+
+    .btn {
+      width: 260px;
+      font-size: 30px;
+      color: #d9d9d7;
+      background: linear-gradient(to right, #a8234e, #e63877, #a8234e);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+    }
+  }
+
+  .coin {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .img {
+      width: 70%;
+    }
+  }
+}
