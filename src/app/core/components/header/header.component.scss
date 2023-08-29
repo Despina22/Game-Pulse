@@ -2,12 +2,12 @@
   color: #d9d9d7;
   width: 100vw;
   height: 100vh;
-  background: url("../../../../assets/images/background.png");
+  background: url("../../../../assets/images/bg-2.png");
   background-repeat: repeat;
   background-size: cover;
   display: flex;
   justify-content: space-between;
-  padding: 80px 10vw;
+  padding: 80px 10vw 0px;
 
   .header {
     width: 50%;
@@ -21,7 +21,7 @@
     }
 
     .win-header {
-      font-size: 20px;
+      font-size: 22px;
     }
 
     .paragraph {
@@ -37,6 +37,7 @@
       padding: 10px 20px;
       border: none;
       border-radius: 30px;
+      cursor: pointer;
     }
   }
 
