@@ -25,4 +25,17 @@
       cursor: pointer;
     }
   }
+
+  .navigation {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+
+    .icon {
+      font-size: 35px;
+      transform: translateY(-20%);
+    }
+  }
 }
