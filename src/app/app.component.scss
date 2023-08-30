@@ -1,1 +1,8 @@
-
+.wrapper,
+.games {
+  width: 100vw;
+  height: auto;
+  background: url("./../assets/images/bg.png");
+  background-repeat: repeat;
+  background-size: cover;
+}
