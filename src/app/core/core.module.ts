@@ -9,13 +9,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LayoutHomepageComponent } from './layouts/components/layout-homepage/layout-homepage.component';
 import { RouterModule } from '@angular/router';
 
+const COMPONENTS = [NavigationComponent, HeaderComponent, FooterComponent];
 @NgModule({
-  declarations: [
-    NavigationComponent,
-    HeaderComponent,
-    FooterComponent,
-    LayoutHomepageComponent,
-  ],
+  declarations: [...COMPONENTS, LayoutHomepageComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -23,6 +19,6 @@ import { RouterModule } from '@angular/router';
     FeaturesModule,
     RouterModule,
   ],
-  exports: [NavigationComponent, HeaderComponent, FooterComponent],
+  exports: [...COMPONENTS],
 })
 export class CoreModule {}

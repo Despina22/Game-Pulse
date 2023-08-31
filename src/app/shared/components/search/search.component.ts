@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 
 @Component({
@@ -6,10 +6,8 @@ import { SearchService } from '../../services/search.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
   constructor(private searchService: SearchService) {}
-
-  ngOnInit(): void {}
 
   onSearchTerm(searchValue: string) {
     this.searchService.searchValue$.next(searchValue);
