@@ -1,23 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Game } from '../interfaces/game.interface';
 import { GamesService } from '../../services/games.service';
-import { Observable, take } from 'rxjs';
+import {
+  Observable,
+  Subject,
+  debounceTime,
+  switchMap,
+  take,
+  takeUntil,
+} from 'rxjs';
+import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
   selector: 'app-game-card',
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.scss'],
 })
-export class GameCardComponent implements OnInit {
+export class GameCardComponent implements OnInit, OnDestroy {
   gameList!: Game[];
   gamesPerPage: number = 3;
   selectedPage = 1;
   games: Game[] = [];
+  gameNotFound: boolean = false;
 
-  constructor(private gamesService: GamesService) {}
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
+  constructor(
+    private gamesService: GamesService,
+    private searchService: SearchService
+  ) {}
 
   ngOnInit(): void {
     this.getGames();
+    this.searchGame();
   }
 
   getGames() {
@@ -53,5 +68,28 @@ export class GameCardComponent implements OnInit {
   get pageNumbers(): number[] {
     const pageCount = Math.ceil(this.gameList?.length / this.gamesPerPage);
     return Array.from({ length: pageCount }, (_, i) => i + 1);
+  }
+
+  private searchGame(): void {
+    this.searchService.searchValue$
+      .asObservable()
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        debounceTime(500),
+        switchMap((term) => this.searchService.searchGame(term))
+      )
+      .subscribe((data) => {
+        if (data.length) {
+          this.gameNotFound = false;
+          this.games = data;
+        } else {
+          this.gameNotFound = true;
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

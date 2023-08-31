@@ -1,44 +1,51 @@
-<div class="wrapper">
-  <div class="container">
-    <ng-container *ngFor="let game of games">
-      <div class="card">
-        <img [src]="game.imageUrl" [alt]="game.name" />
-        <div class="card-info">
-          <h3>{{ game.name }}</h3>
-          <span class="price">{{ game.price | currency : "EUR" }}</span>
+<ng-container *ngIf="!gameNotFound; else noGame">
+  <div class="wrapper">
+    <div class="container">
+      <ng-container *ngFor="let game of games">
+        <div class="card">
+          <img [src]="game.imageUrl" [alt]="game.name" />
+          <div class="card-info">
+            <h3>{{ game.name }}</h3>
+            <span class="price">{{ game.price | currency : "EUR" }}</span>
+          </div>
+          <div class="overview">
+            <h3>{{ game.name }}</h3>
+            <p>Publisher :{{ game.publisher }}</p>
+            <p>{{ game.description }}</p>
+            <button class="btn">Buy</button>
+          </div>
         </div>
-        <div class="overview">
-          <h3>{{ game.name }}</h3>
-          <p>Publisher :{{ game.publisher }}</p>
-          <p>{{ game.description }}</p>
-          <button class="btn">Buy</button>
-        </div>
+      </ng-container>
+    </div>
+
+    <div class="pagination">
+      <div class="select">
+        <select
+          class="select-control"
+          [value]="gamesPerPage"
+          (change)="changePageSize($event)"
+        >
+          <option value="3">3 Per Page</option>
+          <option value="6">6 Per Page</option>
+          <option value="9">9 Per Page</option>
+        </select>
       </div>
-    </ng-container>
-  </div>
 
-  <div class="pagination">
-    <div class="select">
-      <select
-        class="select-control"
-        [value]="gamesPerPage"
-        (change)="changePageSize($event)"
-      >
-        <option value="3">3 Per Page</option>
-        <option value="6">6 Per Page</option>
-        <option value="9">9 Per Page</option>
-      </select>
-    </div>
-
-    <div class="pag">
-      <button
-        class="btn active"
-        *ngFor="let page of pageNumbers"
-        (click)="changePage(page)"
-        [class.active]="page === selectedPage"
-      >
-        {{ page }}
-      </button>
+      <div class="pag">
+        <button
+          class="btn active"
+          *ngFor="let page of pageNumbers"
+          (click)="changePage(page)"
+          [class.active]="page === selectedPage"
+        >
+          {{ page }}
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
+<ng-template #noGame>
+  <div class="no-game">
+    <p class="paragraph">This Game doesn't exist.Try again.</p>
+  </div>
+</ng-template>

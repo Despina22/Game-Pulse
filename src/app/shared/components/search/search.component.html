@@ -1,4 +1,10 @@
 <div class="search-container">
   <mat-icon class="search-icon">search</mat-icon>
-  <input type="text" placeholder="Search..." class="search-input" />
+  <input
+    type="text"
+    placeholder="Search..."
+    class="search-input"
+    #searchField
+    (keyup)="onSearchTerm(searchField.value)"
+  />
 </div>
