@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LayoutHomepageComponent } from './layouts/components/layout-homepage/layout-homepage.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,13 @@ import { LayoutHomepageComponent } from './layouts/components/layout-homepage/la
     FooterComponent,
     LayoutHomepageComponent,
   ],
-  imports: [CommonModule, MatIconModule, FontAwesomeModule, FeaturesModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    FontAwesomeModule,
+    FeaturesModule,
+    RouterModule,
+  ],
   exports: [NavigationComponent, HeaderComponent, FooterComponent],
 })
 export class CoreModule {}

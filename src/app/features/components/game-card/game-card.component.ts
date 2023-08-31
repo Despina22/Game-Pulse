@@ -51,8 +51,7 @@ export class GameCardComponent implements OnInit {
   }
 
   get pageNumbers(): number[] {
-    return Array(Math.ceil(this.gameList?.length / this.gamesPerPage))
-      .fill(0)
-      .map((x, i) => i + 1);
+    const pageCount = Math.ceil(this.gameList?.length / this.gamesPerPage);
+    return Array.from({ length: pageCount }, (_, i) => i + 1);
   }
 }
