@@ -2,7 +2,12 @@
   <h2 class="header">Games Available</h2>
   <div class="games-container">
     <ng-container *ngFor="let game of games">
-      <img [src]="game.imageUrl" [alt]="game.name" class="img" />
+      <img
+        [src]="game.imageUrl"
+        [alt]="game.name"
+        class="img"
+        [routerLink]="['game', game.id]"
+      />
     </ng-container>
   </div>
   <button class="btn" routerLink="games">All Games</button>

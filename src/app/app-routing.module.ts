@@ -2,6 +2,7 @@ import { GameCardComponent } from './features/components/game-card/game-card.com
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutHomepageComponent } from './core/layouts/components/layout-homepage/layout-homepage.component';
+import { GameDetailComponent } from './features/components/game-detail/game-detail.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: LayoutHomepageComponent,
   },
   { path: 'games', component: GameCardComponent },
+  { path: 'game/:gameId', component: GameDetailComponent },
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <ng-container *ngFor="let game of games">
-        <div class="card">
+        <div class="card" routerLink="/game/{{ game.id }}">
           <img [src]="game.imageUrl" [alt]="game.name" />
           <div class="card-info">
             <h3>{{ game.name }}</h3>

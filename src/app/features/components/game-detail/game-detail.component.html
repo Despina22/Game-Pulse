@@ -1,0 +1,12 @@
+<div class="wrapper" *ngIf="game$ | async as game">
+  <div class="container">
+    <img [src]="game.imageUrl" [alt]="game.name" class="img" />
+    <div class="info-container">
+      <h1 class="header">{{ game.name }}</h1>
+      <p class="paragraph">Publisher: {{ game.publisher }}</p>
+      <p class="description">{{ game.description }}</p>
+      <p class="price">{{ game.price | currency : "EUR" }}</p>
+      <button class="btn">Buy Now</button>
+    </div>
+  </div>
+</div>

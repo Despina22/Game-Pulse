@@ -1,15 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Game } from '../interfaces/game.interface';
-import { GamesService } from '../../services/games.service';
-import {
-  Observable,
-  Subject,
-  debounceTime,
-  switchMap,
-  take,
-  takeUntil,
-} from 'rxjs';
+import { Subject, debounceTime, switchMap, take, takeUntil } from 'rxjs';
 import { SearchService } from 'src/app/shared/services/search.service';
+import { GamesService } from '../../services/games.service';
+import { Game } from '../interfaces/game.interface';
 
 @Component({
   selector: 'app-game-card',
@@ -35,17 +28,6 @@ export class GameCardComponent implements OnInit, OnDestroy {
     this.searchGame();
   }
 
-  getGames() {
-    this.gamesService
-      .getAllGames()
-      .pipe(take(1))
-      .subscribe((data) => {
-        this.gameList = data;
-        let pageIndex = (this.selectedPage - 1) * this.gamesPerPage;
-        this.games = this.gameList.slice(pageIndex, this.gamesPerPage);
-      });
-  }
-
   changePageSize(event: Event) {
     const newSize = (event.target as HTMLInputElement).value;
     this.gamesPerPage = Number(newSize);
@@ -57,17 +39,23 @@ export class GameCardComponent implements OnInit, OnDestroy {
     this.slicedGames();
   }
 
-  slicedGames() {
+  private getGames() {
+    this.gamesService
+      .getAllGames()
+      .pipe(take(1))
+      .subscribe((data) => {
+        this.gameList = data;
+        let pageIndex = (this.selectedPage - 1) * this.gamesPerPage;
+        this.games = this.gameList.slice(pageIndex, this.gamesPerPage);
+      });
+  }
+
+  private slicedGames() {
     let pageIndex = (this.selectedPage - 1) * this.gamesPerPage;
     let endIndex =
       (this.selectedPage - 1) * this.gamesPerPage + this.gamesPerPage;
     this.games = [];
     this.games = this.gameList.slice(pageIndex, endIndex);
-  }
-
-  get pageNumbers(): number[] {
-    const pageCount = Math.ceil(this.gameList?.length / this.gamesPerPage);
-    return Array.from({ length: pageCount }, (_, i) => i + 1);
   }
 
   private searchGame(): void {
@@ -86,6 +74,11 @@ export class GameCardComponent implements OnInit, OnDestroy {
           this.gameNotFound = true;
         }
       });
+  }
+
+  get pageNumbers(): number[] {
+    const pageCount = Math.ceil(this.gameList?.length / this.gamesPerPage);
+    return Array.from({ length: pageCount }, (_, i) => i + 1);
   }
 
   ngOnDestroy(): void {
