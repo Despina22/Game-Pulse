@@ -14,14 +14,6 @@
     margin-bottom: 10px;
     cursor: pointer;
   }
-
-  .container {
-    .icon {
-      font-size: 30px;
-      margin: 0 15px;
-      cursor: pointer;
-    }
-  }
 }
 
 @media only screen and (max-width: 650px) {
@@ -31,13 +23,6 @@
     .logo {
       font-size: 18px;
       letter-spacing: 2px;
-    }
-
-    .container {
-      .icon {
-        font-size: 20px;
-        margin: 0 10px;
-      }
     }
   }
 }

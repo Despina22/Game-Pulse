@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import {
-  faFacebook,
-  faInstagram,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -11,8 +6,5 @@ import {
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  facebookIcon = faFacebook;
-  instagramIcon = faInstagram;
-  youtubeIcon = faYoutube;
   date: Date = new Date();
 }
