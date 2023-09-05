@@ -62,13 +62,17 @@
       .header {
         font-size: 25px;
       }
+
+      .paragraph {
+        text-align: center;
+      }
     }
   }
 }
 
 @media only screen and (max-width: 650px) {
   .wrapper {
-    width: 85vw;
+    width: 100vw;
     .image-container {
       display: none;
 
@@ -78,10 +82,15 @@
     }
 
     .earn-container {
-      width: 100%;
+      width: 85%;
+      margin: 0 auto;
 
       .header {
         font-size: 25px;
+      }
+
+      .paragraph {
+        text-align: center;
       }
     }
   }
