@@ -44,3 +44,45 @@
     }
   }
 }
+
+@media only screen and (min-width: 650px) and (max-width: 768px) {
+  .wrapper {
+    width: 95vw;
+    .image-container {
+      width: 40%;
+
+      .img {
+        width: 400px;
+      }
+    }
+
+    .earn-container {
+      margin-right: 50px;
+
+      .header {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .wrapper {
+    width: 85vw;
+    .image-container {
+      display: none;
+
+      .img {
+        display: none;
+      }
+    }
+
+    .earn-container {
+      width: 100%;
+
+      .header {
+        font-size: 25px;
+      }
+    }
+  }
+}

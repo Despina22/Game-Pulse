@@ -68,3 +68,48 @@
     }
   }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .wrapper {
+    .header {
+      .logo {
+        font-size: 45px;
+        line-height: 50px;
+      }
+
+      .win-header {
+        font-size: 20px;
+      }
+
+      .paragraph {
+        font-size: 15px;
+      }
+    }
+
+    .coin {
+      .img {
+        max-width: 25vw;
+        max-height: 45vh;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    .header {
+      width: 100%;
+      .logo {
+        font-size: 50px;
+        line-height: 50px;
+      }
+    }
+
+    .coin {
+      display: none;
+      .img {
+        display: none;
+      }
+    }
+  }
+}

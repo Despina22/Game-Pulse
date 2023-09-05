@@ -18,3 +18,16 @@
     background-color: #0c020d;
   }
 }
+
+@media only screen and (min-width: 650px) and (max-width: 768px) {
+  .search-container {
+    width: 200px;
+    margin: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .search-container {
+    display: none;
+  }
+}

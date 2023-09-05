@@ -39,3 +39,24 @@
     }
   }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 892px) {
+  .wrapper {
+    .container {
+      width: 90vw;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    .container {
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 90vw;
+    }
+
+    .img {
+      margin-bottom: 30px;
+    }
+  }
+}
